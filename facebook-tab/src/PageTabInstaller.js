@@ -22,6 +22,7 @@ class PageTabInstaller extends Component {
             }
 
             // Then register page
+            // POST to graph/{page-id}/tabs with payload
             window.FB.ui({
               method: 'pagetab',
               display: 'iframe',
