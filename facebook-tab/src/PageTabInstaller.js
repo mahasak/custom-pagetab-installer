@@ -13,10 +13,10 @@ class PageTabInstaller extends Component {
   
         window.FB.getLoginStatus(function(response) {
           if (response.status === 'connected') {
-            // claim KYC profile first
+            // claim profile first
             let pageTabPaylod = {
                 "app_id": config.app_id,
-                "custom_name": "KYC Profile",
+                "custom_name": config.tab_name,
                 "is_non_connection_landing_tab": false,
                 "position": 1
             }
