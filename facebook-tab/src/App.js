@@ -1,40 +1,45 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import logo from './logo.svg';
 import './App.css';
 
 const App = () => (
   <Router>
     <div>
-
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
     </div>
   </Router>
 );
 
-class App2 extends Component {
+class Home extends Component {
+  componentDidMount() {
+    window.fbAsyncInit = function() {
+      window.FB.init({
+        appId            : 'your-app-id',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v3.1'
+      });
+    }.bind(this);
+      
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h2>Home</h2>
       </div>
     );
   }
-}
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+};
 
 const About = () => (
   <div>
